@@ -12,14 +12,17 @@ class Invoice(object):
 
         for category in sorted(sorted_intervals.keys(), key=config.text_for):
             intervals = sorted_intervals[category]
-            days = set([interval.get_date().date() for interval in intervals])
+            days = set([interval.get_date() for interval in intervals])
             intervals_by_day = {
-                day: [i for i in intervals if i.get_date().date() == day]
-                for day in days
+                day: [i for i in intervals if i.get_date() == day] for day in days
             }
 
             self.__items.append(
-                ItemCategory(config.text_for(category), intervals_by_day, config.rate_for(category))
+                ItemCategory(
+                    config.text_for(category),
+                    intervals_by_day,
+                    config.rate_for(category),
+                )
             )
 
     def _sort_by_category(self, list_of_intervals):
