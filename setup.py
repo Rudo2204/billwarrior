@@ -30,11 +30,14 @@ setup(
     author_email="exec@sett.sh",
     license="GPLv3",
     packages=["billwarrior"],
-    install_requires=["timew-report==1.0.2"],
+    install_requires=["timew-report==1.4"],
     scripts=["bin/billwarrior"],
     data_files=[
         (CONFIG_DIR, ["etc/billwarrior.ini"]),
-        (os.path.join(CONFIG_DIR, "latex"), ["etc/latex/invoice.cls", "etc/latex/invoice.tex"]),
+        (
+            os.path.join(CONFIG_DIR, "latex"),
+            ["etc/latex/invoice.cls", "etc/latex/invoice.tex"],
+        ),
     ],
     zip_safe=False,
 )
